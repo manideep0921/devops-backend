@@ -33,3 +33,7 @@ def health():
         "env": os.getenv("ENV", "development")
     }
 
+@app.get("/crash")
+def crash():
+    logger.error("crash endpoint called - app will exit")
+    raise SystemExit("simulated crash")
