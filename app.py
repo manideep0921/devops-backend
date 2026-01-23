@@ -32,8 +32,3 @@ def health():
         "app": os.getenv("APP_NAME", "devops-backend"),
         "env": os.getenv("ENV", "development")
     }
-
-@app.get("/crash")
-def crash():
-    logger.error("crash endpoint called - app will exit")
-    raise SystemExit("simulated crash")
