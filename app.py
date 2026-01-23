@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from datetime import datetime
 
@@ -15,6 +16,11 @@ def hello():
 def time():
     return {"current_time": str(datetime.now())}
 
-@app.get("/name")
-def my_name():
-    return {"name": "Manideep"}
+@app.get("/health")
+def health():
+    return {
+        "status": "ok",
+        "app": os.getenv("APP_NAME", "devops-backend"),
+        "env": os.getenv("ENV", "development")
+    }
+
